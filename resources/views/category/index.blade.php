@@ -13,11 +13,12 @@
             </a>
         </div>
 
-        <table class="w-full border-collapse border bg-white">
+        <table class="min-w-full bg-gray-800 text-white rounded-md overflow-hidden">
             <thead>
                 <tr>
                     <th class="border px-4 py-2">ID</th>
                     <th class="border px-4 py-2">Name</th>
+                    <th class="border px-4 py-2">Actions</th>
                 </tr>
             </thead>
             <tbody>

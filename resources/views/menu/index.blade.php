@@ -13,45 +13,43 @@
           </a>
       </div>
 
-      <div class="flex flex-col items-center mt-6">
-          <table class="w-full border-collapse border bg-white">
-              <thead>
-                  <tr>
-                      <th class="border px-2 py-2">ID</th>
-                      <th class="border px-2 py-2">Name</th>
-                      <th class="border px-2 py-2">Description</th>
-                      <th class="border px-2 py-2">Price</th>
-                      <th class="border px-2 py-2">Category</th>
-                      <th class="border px-2 py-2">Image</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  @foreach($menus as $menu)
-                  <tr>
-                      <td class="border px-2 py-2">{{$menu->id}}</td>
-                      <td class="border px-2 py-2">{{$menu->name}}</td>
-                      <td class="border px-2 py-2">{{$menu->description}}</td>
-                      <td class="border px-2 py-2">{{$menu->price}}</td>
-                      <td class="border px-2 py-2">{{$menu->category->name}}</td>
-                      <td class="border px-2 py-2">
-                          <img src="{{$menu->picture}}" alt="Menu Image" class="w-16 h-16 object-cover">
-                      </td>
-                      <td class="border px-2 py-2 flex space-x-4">
-                          @can('update', $menu)
-                          <a href="{{route('menu.edit', $menu->id)}}" class="text-sky-600">Edit</a>
-                          @endcan
-                          @can('delete', $menu)
-                          <form action="{{route('menu.delete', $menu->id)}}" method="POST">
-                              @csrf
-                              @method('DELETE')
-                              <button type="submit" class="text-red-600">Delete</button>
-                          </form>
-                          @endcan
-                      </td>
-                  </tr>
-                  @endforeach
-              </tbody>
-          </table>
-      </div>
-  </div>
+       <!-- Menu List -->
+       <div class="mt-8">
+        <table class="min-w-full bg-gray-800 text-white rounded-md overflow-hidden">
+            <thead>
+                <tr>
+                    <th class="border px-4 py-2">ID</th>
+                    <th class="border px-4 py-2">Name</th>
+                    <th class="border px-4 py-2">Category</th>
+                    <th class="border px-4 py-2">Price</th>
+                    <th class="border px-4 py-2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($menus as $menu)
+                    <tr>
+                        <td class="border px-4 py-2">{{ $menu->id }}</td>
+                        <td class="border px-4 py-2">{{ $menu->name }}</td>
+                        <td class="border px-4 py-2">{{ $menu->category->name }}</td>
+                        <td class="border px-4 py-2">{{ $menu->price }}</td>
+                        <td class="border px-4 py-2 flex space-x-2">
+                            <!-- Edit Button -->
+                            <a href="{{ route('menu.edit', $menu->id) }}" class="bg-yellow-500 text-white px-4 py-2 rounded-md">
+                                Edit
+                            </a>
+                            <!-- Delete Button -->
+                            <form action="{{ route('menu.delete', $menu->id) }}" method="GET">
+                                @csrf
+                                @method('GET')
+                                <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-md">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
 </x-app-layout>

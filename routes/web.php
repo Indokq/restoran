@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\dashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +26,7 @@ Route::view('profile', 'profile')
 require __DIR__.'/auth.php';
 
 Route::middleware('auth')->group(function () {
-	Route::get('dashboard', function () {
-		return view('dashboard');
-	})->name('dashboard');
+	Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
 
 
     Route::controller(MenuController::class)->prefix('menu')->group(function () {
@@ -35,7 +34,7 @@ Route::middleware('auth')->group(function () {
 		Route::get('create', 'create')->name('menu.create');
 		Route::post('store', 'store')->name('menu.store');
 		Route::get('edit/{id}', 'edit')->name('menu.edit');
-		Route::post('update', 'update')->name('menu.update');
+		Route::post('update/{id}', 'update')->name('menu.update');
 		Route::get('delete/{id}', 'delete')->name('menu.delete');
 
 
@@ -48,7 +47,7 @@ Route::middleware('auth')->group(function () {
 		Route::post('store', 'store')->name('category.store');
 		Route::get('edit/{id}', 'edit')->name('category.edit');
 		Route::get('delete/{id}', 'delete')->name('category.delete');
-		Route::post('update', 'update')->name('category.update');
+		Route::post('update/{id}', 'update')->name('category.update');
 	});
 
 

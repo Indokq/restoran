@@ -8,7 +8,7 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 px-2">
         <form action="{{ route('menu.update', $menu->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
-            @method('PUT')
+            @method('POST')
 
             <!-- Name -->
             <div>

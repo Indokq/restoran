@@ -47,10 +47,10 @@ class MenuController extends Controller
     }
 
     public function edit($id) {
-        $menus =  Menu::findOrFail($id)->first();
+        $menus =  Menu::find($id);
         $categories = Category::get();
 
-        return redirect()->route('menu.edit', compact('menu', 'categories'));
+        return redirect()->route('menu.edit', compact('menus', 'categories'));
     }
 
     public function update($id, Request $request)

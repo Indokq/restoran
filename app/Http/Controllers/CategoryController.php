@@ -69,10 +69,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified category from the database.
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        $category = Category::findOrFail($id);
-        $category->delete();
+        $category = Category::find($id)->delete();
+        
 
         return redirect()->route('category.index')->with('success', 'Category deleted successfully!');
     }

@@ -8,7 +8,7 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 px-2 mt-6">
         <form action="{{ route('category.update', $category->id) }}" method="POST">
             @csrf
-            @method('PUT')
+            @method('POST')
 
             <!-- Category Name -->
             <div>
