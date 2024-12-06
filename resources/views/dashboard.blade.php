@@ -27,7 +27,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             @forelse($menus as $menu)
                 <div class="bg-white rounded-lg shadow-lg p-4">
-                    <img src="{{ asset('storage/' . $menu->image) }}" alt="{{ $menu->name }}" class="w-full h-32 object-cover rounded-md mb-4">
+                    <img src="{{ url('storage/' . $menu->image) }}" alt="{{ $menu->name }}" class="w-full h-32 object-cover rounded-md mb-4">
                     <h3 class="text-lg font-bold text-gray-800">{{ $menu->name }}</h3>
                     <p class="text-gray-600">{{ $menu->description }}</p>
                     <p class="text-gray-800 font-semibold mt-2">Price: ${{ number_format($menu->price, 2) }}</p>

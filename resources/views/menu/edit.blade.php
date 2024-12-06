@@ -12,28 +12,28 @@
 
             <!-- Name -->
             <div>
-                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                <label for="name" class="block text-sm font-medium text-white">Name</label>
                 <input type="text" name="name" id="name" value="{{ $menu->name }}" required
                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
             </div>
 
             <!-- Price -->
             <div class="mt-4">
-                <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
+                <label for="price" class="block text-sm font-medium text-white">Price</label>
                 <input type="number" name="price" id="price" value="{{ $menu->price }}" required
                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
             </div>
 
             <!-- Description -->
             <div class="mt-4">
-                <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                <label for="description" class="block text-sm font-medium text-white">Description</label>
                 <textarea name="description" id="description" rows="4"
                           class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">{{ $menu->description }}</textarea>
             </div>
 
             <!-- Category -->
             <div class="mt-4">
-                <label for="id_category" class="block text-sm font-medium text-gray-700">Category</label>
+                <label for="id_category" class="block text-sm font-medium text-white">Category</label>
                 <select name="id_category" id="id_category" required
                         class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
                     @foreach($categories as $category)
@@ -46,8 +46,8 @@
 
             <!-- Image -->
             <div class="mt-4">
-                <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
-                <input type="file" name="image" id="image" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                <label for="image" class="block text-sm font-medium text-white">Image</label>
+                <input type="file" name="image" id="image" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm text-white">
                 @if($menu->image)
                     <div class="mt-2">
                         <img src="{{ asset('storage/' . $menu->image) }}" alt="Current Image" class="w-32 h-32 object-cover">

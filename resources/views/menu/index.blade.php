@@ -18,21 +18,23 @@
         <table class="min-w-full bg-gray-800 text-white rounded-md overflow-hidden">
             <thead>
                 <tr>
-                    <th class="border px-4 py-2">ID</th>
                     <th class="border px-4 py-2">Name</th>
                     <th class="border px-4 py-2">Category</th>
                     <th class="border px-4 py-2">Price</th>
+                    <th class="border px-4 py-2">Image</th>
                     <th class="border px-4 py-2">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($menus as $menu)
                     <tr>
-                        <td class="border px-4 py-2">{{ $menu->id }}</td>
                         <td class="border px-4 py-2">{{ $menu->name }}</td>
                         <td class="border px-4 py-2">{{ $menu->category->name }}</td>
                         <td class="border px-4 py-2">{{ $menu->price }}</td>
-                        <td class="border px-4 py-2 flex space-x-2">
+                        <td class="border px-4 py-2">
+                            <img src="{{ url('storage/' . $menu->image) }}" alt="Menu Image" class="w-16 h-16 object-cover">
+                        </td>
+                        <td class="border px-4 py-7 flex space-x-2">
                             <!-- Edit Button -->
                             <a href="{{ route('menu.edit', $menu->id) }}" class="bg-yellow-500 text-white px-4 py-2 rounded-md">
                                 Edit

@@ -36,9 +36,6 @@ Route::middleware('auth')->group(function () {
 		Route::get('edit/{id}', 'edit')->name('menu.edit');
 		Route::post('update/{id}', 'update')->name('menu.update');
 		Route::get('delete/{id}', 'delete')->name('menu.delete');
-
-
-
 	});
 
 	Route::controller(CategoryController::class)->prefix('category')->group(function() {

@@ -46,18 +46,20 @@ class MenuController extends Controller
         return redirect()->route('menu.index')->with('success', 'Menu created successfully!');
     }
 
-    public function edit($id) {
-        $menus =  Menu::find($id);
-        $categories = Category::get();
+    public function edit($id)
+    {
+    $menu = Menu::findOrFail($id); // Find the menu by ID
+    $categories = Category::all(); // Fetch all categories
 
-        return redirect()->route('menu.edit', compact('menus', 'categories'));
+    // Return the edit view with menu and categories data
+    return view('menu.edit', compact('menu', 'categories'));
     }
 
-    public function update($id, Request $request)
-{
+    public function update($id, Request $request)   
+    {
     // Validate the incoming request data
     $this->validate($request, [
-        'name' => 'required',
+        'name' => 'required',               
         'price' => 'required|numeric',
         'image' => 'nullable|image|mimes:jpeg,png,jpg', // Image is optional for updates
         'id_category' => 'required|exists:category,id', // Ensure the category exists
