@@ -46,14 +46,14 @@ class MenuController extends Controller
         return redirect()->route('menu.index')->with('success', 'Menu created successfully!');
     }
 
-    public function edit($id)
-    {
-    $menu = Menu::findOrFail($id); // Find the menu by ID
-    $categories = Category::all(); // Fetch all categories
+        public function edit($id)
+        {
+        $menu = Menu::findOrFail($id); // Find the menu by ID
+        $categories = Category::all(); // Fetch all categories
 
-    // Return the edit view with menu and categories data
-    return view('menu.edit', compact('menu', 'categories'));
-    }
+        // Return the edit view with menu and categories data
+        return view('menu.edit', compact('menu', 'categories'));
+        }
 
     public function update($id, Request $request)   
     {

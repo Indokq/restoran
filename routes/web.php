@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +38,7 @@ Route::middleware('auth')->group(function () {
 		Route::post('update/{id}', 'update')->name('menu.update');
 		Route::get('delete/{id}', 'delete')->name('menu.delete');
 	});
-
+	
 	Route::controller(CategoryController::class)->prefix('category')->group(function() {
 		Route::get('', 'index')->name('category.index');
 		Route::get('create', 'create')->name('category.create');
@@ -45,6 +46,12 @@ Route::middleware('auth')->group(function () {
 		Route::get('edit/{id}', 'edit')->name('category.edit');
 		Route::get('delete/{id}', 'delete')->name('category.delete');
 		Route::post('update/{id}', 'update')->name('category.update');
+	});
+
+	Route::controller(OrderController::class)->prefix('orders')->group(function (){
+		Route::get('', 'index')->name('orders.index');
+		Route::post('store', 'store')->name('orders.store');
+		route::get('delete/({id}', 'delete')->name('orders.delete');
 	});
 
 

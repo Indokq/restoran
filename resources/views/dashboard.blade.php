@@ -32,6 +32,15 @@
                     <p class="text-gray-600">{{ $menu->description }}</p>
                     <p class="text-gray-800 font-semibold mt-2">Price: ${{ number_format($menu->price, 2) }}</p>
                     <p class="text-sm text-gray-500 mt-1">Category: {{ $menu->category ? $menu->category->name : 'No Category' }}</p>
+                    <!-- Order Button -->
+                    <form method="POST" action="{{ route('orders.store') }}" class="mt-4">
+                        @csrf
+                        <input type="hidden" name="menu_id" value="{{ $menu->id }}">
+                        <input type="number" name="quantity" min="1" placeholder="Quantity" class="w-full border-gray-300 rounded-md shadow-sm mb-2">
+                        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md w-full">
+                            Order Now
+                        </button>
+                    </form>
                 </div>
             @empty
                 <p class="col-span-full text-center text-white">No menu items found.</p>

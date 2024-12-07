@@ -42,6 +42,10 @@ new class extends Component
                         {{ __('Categories') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index')" wire:navigate>
+                        {{ __('Orders') }}
+                    </x-nav-link>
+
                 </div>
             </div>
 
