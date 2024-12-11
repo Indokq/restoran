@@ -9,20 +9,23 @@
         <!-- Category Sorting -->
         <div class="flex justify-between items-center mb-6">
             <h2 class="text-white font-bold text-lg">Filter by Category</h2>
-            <form method="GET" action="{{ route('dashboard') }}">
-                <select name="category" class="border-gray-300 rounded-md shadow-sm">
-                    <option value="">All Categories</option>
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}" 
-                            {{ request('category') == $category->id ? 'selected' : '' }}>
-                            {{ $category->name }}
-                        </option>
-                    @endforeach
-                </select>
-                <button type="submit" class="ml-2 bg-blue-500 text-white px-4 py-2 rounded-md">Filter</button>
-            </form>
+            <div class="flex gap-2">
+                <a href="{{ route('dashboard', ['category' => '']) }}" 
+                   class="px-4 py-2 rounded-md text-white 
+                          {{ request('category') == '' ? 'bg-green-600' : 'bg-gray-700' }}">
+                    All Categories
+                </a>
+                @foreach($categories as $category)
+                    <a href="{{ route('dashboard', ['category' => $category->id]) }}" 
+                       class="px-4 py-2 rounded-md text-white 
+                              {{ request('category') == $category->id ? 'bg-green-600' : 'bg-gray-700' }}">
+                        {{ $category->name }}
+                    </a>
+                @endforeach
+            </div>
         </div>
-
+    </div>
+    
         <!-- Menu Cards -->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             @forelse($menus as $menu)
